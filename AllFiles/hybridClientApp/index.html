@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <title>UTM APP</title>
+
+
+
+    <script type="text/javascript">
+
+    
+
+
+
+        function insertStudent() {
+            
+            var names_c = $("[name='names']").val();
+            var cohort_c = $("[name='cohort']").val();
+            var email_c = $("[name='email']").val();
+            var username_c = $("[name='username']").val();
+            var password_c = $("[name='password']").val();
+            var url = "http://localhost/onlineData/index.php?operation=2&names=" + names_c + "&cohort=" + cohort_c + "&email=" + email_c + "&username=" + username_c + "&password=" + password_c;
+
+            $.get(url, function (data, status) {
+                alert(data);
+            });
+        }
+
+
+        function viewNews() {
+            var url = "http://localhost/onlineData/admin.php?view=1";
+
+            $.get(url, function (table, status) {
+                $('#newsview').html(table);
+            });
+        }
+
+        function viewEvents() {
+            var url = "http://localhost/onlineData/admin.php?view=2";
+
+            $.get(url, function (table, status) {
+                $('#eventsview').html(table);
+            });
+        }
+    </script>
+
+
+    <!--swiper css-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+</head>
+
+<body>
+
+    <body>
+        <!--landing page-->
+
+        <div data-role="page" id="home" class="jqm-demos ui-responsive-panel" data-title="home" data-url="home">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>About UTM</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <!-- Slider main container -->
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div>
+
+                                <h3>
+                                    School of Health Sciences (SHS) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm1.jpg"
+                                        title="School of Health Sciences (SHS)" alt="School of Health Sciences (SHS)"
+                                        style="padding-top: 24px;">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+                                <h3>
+                                    School of Business, Management and Finance (SBMF) </h3>
+
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm1.jpg"
+                                        title="School of Business, Management and Finance (SBMF)"
+                                        alt="School of Business, Management and Finance (SBMF)">
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+
+
+                                <h3>
+                                    School of Sustainable Development and Tourism (SSDT) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm2.jpg"
+                                        title="School of Sustainable Development and Tourism (SSDT)"
+                                        alt="School of Sustainable Development and Tourism (SSDT)">
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+
+
+                                <h3>
+                                    School of Innovative Technologies and Engineering (SITE) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm5.jpg"
+                                        title="School of Innovative Technologies and Engineering (SITE)"
+                                        alt="School of Innovative Technologies and Engineering (SITE)">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- /content -->
+
+
+
+
+
+            </div>
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#apply">Want to Apply?</a></li>
+                    <li><a href="#newss">News & Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+                <form class="userform">
+                    <h2>Student Login</h2>
+                    <label for="uname">Username:</label>
+                    <input type="text" name="uname" id="uname" value="" data-clear-btn="true" data-mini="true">
+                    <label for="upassword">Password:</label>
+                    <input type="password" name="upassword" id="upassword" value="" data-clear-btn="true"
+                        autocomplete="off" data-mini="true">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><a href="#" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                        <div class="ui-block-b"><a href="#home2" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</a></div>
+                    </div>
+                </form>
+                <p>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+        </div>
+
+        <!-- end of landing page-->
+
+
+
+        <!--Start of Register Page-->
+        <div data-role="page" id="register" class="jqm-demos ui-responsive-panel" data-title="register"
+            data-url="register">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>About UTM</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <form>
+                    <label class="ui-hidden-accessible">Name</label>
+                    <input name="names" type="text" placeholder="Name" />
+                    <label class="ui-hidden-accessible">Cohort</label>
+                    <input name="cohort" type="text" placeholder="cohort" />
+                    <label class="ui-hidden-accessible">Email</label>
+                    <input name="email" type="text" placeholder="Email" />
+                    <label class="ui-hidden-accessible">Username</label>
+                    <input name="username" type="text" placeholder="Username" />
+                    <label class="ui-hidden-accessible">Password</label>
+                    <input name="password" type="password" placeholder="Password" />
+                    <input type="submit" value="Register" onclick="insertStudent()" />
+
+
+                </form>
+
+                <p id="a_name"></p>
+            </div>
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#apply">Want to Apply?</a></li>
+                    <li><a href="#newss">News & Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+                    <li><a href="#register">Register</a></li>
+
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+                <form class="userform">
+                    <h2>Student Login</h2>
+                    <label for="unames">Username:</label>
+                    <input type="text" name="uname" id="uname" value="" data-clear-btn="true" data-mini="true">
+                    <label for="upassword">Password:</label>
+                    <input type="password" name="upassword" id="upassword" value="" data-clear-btn="true"
+                        autocomplete="off" data-mini="true">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><a href="#" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                        <div class="ui-block-b"><a href="#home2" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</a></div>
+                    </div>
+                </form>
+                <p>
+
+                </p>
+            </div>
+            <div data-role="footer">
+
+            </div>
+        </div>
+        <!--End of  Register -->
+
+
+        <!--Start of About Page-->
+
+        <div data-role="page" id="about" class="jqm-demos ui-responsive-panel" data-title="About UTM" data-url="about">
+
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>About UTM</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content">
+                <h3>When was UTM Founded?</h3>
+                <p>The University of Technology, Mauritius (UTM) was created in year 2000 by Act of Parliament as the
+                    Government implemented its plan to have a second University which would focus towards development of
+                    oriented sectors in particular.</p>
+                <p>The UTM became fully operational in August 2001. </p>
+                <br>
+                <h3>How to contact Us?</h3>
+                <p> University of Technology, Mauritius</p>
+                <p>La Tour Koenig</p>
+                <p>Pointe-aux-Sables</p>
+                <p>MAURITIUS</p>
+                <p>Tel:207 5250</p>
+                <p>Email: <a href="mailto:registrar@umail.utm.ac.mu">registrar@umail.utm.ac.mu</a></p>
+                <br>
+                <h3>Where to find Us?</h3>
+                <p>La Tour Koenig, Pointe-aux-Sables, Republic of Mauritius</p>
+                <div id="map" style="width: 600px; height: 400px;"></div>
+
+                <script>
+                    var mymap = L.map('map').setView([-20.177351899999998, 57.46766379999999], 16);
+                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+                        {
+                            maxZoom: 19, attribution: 'Map data &copy;' + '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>' + 'contributors,<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://' + 'www.mapbox.com/">Mapbox</a>',
+                            id: 'mapbox/streets-v11',
+                            tileSize: 512,
+                            zoomOffset: -1,
+                            accessToken: 'pk.eyJ1Ijoic2FydmVzaC1jYWxseWNodXJuIiwiYSI6ImNrcTBxM2IwOTA2OXEyb3A4emM2MjZncTcifQ.FAiVGNu84WVtlSC_g6tEeA'
+                        }).addTo(mymap);
+                    var marker = L.marker([-20.177351899999998, 57.46766379999999]).addTo(mymap);
+                    marker.bindPopup("We are Here").openPopup()
+                </script>
+
+
+
+                <br>
+            </div><!-- /content -->
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#apply">Want to Apply?</a></li>
+                    <li><a href="#newss">News & Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+                <form class="userform">
+                    <h2>Student Login</h2>
+                    <label for="uname">Username:</label>
+                    <input type="text" name="unames" id="uname" value="" data-clear-btn="true" data-mini="true">
+                    <label for="upassword">Password:</label>
+                    <input type="password" name="upasswords" id="upassword" value="" data-clear-btn="true"
+                        autocomplete="off" data-mini="true">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><a href="#" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                        <div class="ui-block-b"><a href="#home2" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</a></div>
+                    </div>
+                </form>
+                <p>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div><!-- /footer -->
+        </div>
+
+
+        <!-- End of About page -->
+
+        <!--Start of  Want to Apply?-->
+
+
+        <div data-role="page" id="apply" class="jqm-demos ui-responsive-panel" data-title="Want to Apply?"
+            data-url="apply">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>News</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+
+                <p>
+                    Click <a href="http://www.utm.ac.mu/files/sthug/SBM/UTM_Payment_SBM_Services_Unit_new.pdf">here</a>
+                    to download guidelines for payment of fees through the SBM Services Unit<br>
+                    &nbsp;</p>
+
+                <p></p>
+                Click <a href="http://www.utm.ac.mu/files/sthug/SBM/Cash_Deposit_Voucher_Form.pdf">here</a> to download
+                the Cash Deposit Voucher Form that must be duly completed and signed by the student.</p>
+
+
+
+                <h2>MAURITIAN STUDENTS</h2>
+                <p>Application Fees : Rs 1,000/-<br>
+                    <br>General Fees : Rs 4,000/- per Semester(NB: There are 2 semesters in an Academic year)<br>
+                    <br>Student Union Fees : Rs 200/-
+                </p>
+                <br>
+                <h2>INTERNATIONAL STUDENTS</h2>
+                <p>Application Fees : US$ 50 Payable on Submission of Application<br>
+                    <br>General Fees : US$ 200 Payable on Registration Day (Non-refundable)<br>
+                    <br>Student Union Fees : US$ 10/- (Non-refundable)<br>
+                </p>
+
+
+            </div><!-- /content -->
+
+
+
+
+
+
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#apply">Want to Apply?</a></li>
+                    <li><a href="#newss">News & Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+                    <li><a href="#register">Register</a></li>
+
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+                <form class="userform">
+                    <h2>Student Login</h2>
+                    <label for="uname">Username:</label>
+                    <input type="text" name="uname" id="uname" value="" data-clear-btn="true" data-mini="true">
+                    <label for="upassword">Password:</label>
+                    <input type="password" name="upassword" id="upassword" value="" data-clear-btn="true"
+                        autocomplete="off" data-mini="true">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><a href="#" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                        <div class="ui-block-b"><a href="#home2" data-rel="close"
+                                class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</a></div>
+                    </div>
+                </form>
+                <p>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+        </div>
+
+
+        <!--after login page-->
+        <div data-role="page" id="home2" class="jqm-demos ui-responsive-panel" data-title="home" data-url="home2">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>About UTM</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <!-- Slider main container -->
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div>
+
+                                <h3>
+                                    School of Health Sciences (SHS) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm1.jpg"
+                                        title="School of Health Sciences (SHS)" alt="School of Health Sciences (SHS)"
+                                        style="padding-top: 24px;">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+                                <h3>
+                                    School of Business, Management and Finance (SBMF) </h3>
+
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm1.jpg"
+                                        title="School of Business, Management and Finance (SBMF)"
+                                        alt="School of Business, Management and Finance (SBMF)">
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+
+
+                                <h3>
+                                    School of Sustainable Development and Tourism (SSDT) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm2.jpg"
+                                        title="School of Sustainable Development and Tourism (SSDT)"
+                                        alt="School of Sustainable Development and Tourism (SSDT)">
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+
+
+
+                                <h3>
+                                    School of Innovative Technologies and Engineering (SITE) </h3>
+
+                                <div style="text-align: center;">
+                                    <img src="http://www.utm.ac.mu/images/icethumbs/360x220/100/images/sampledata/icetheme/icetabs/utm5.jpg"
+                                        title="School of Innovative Technologies and Engineering (SITE)"
+                                        alt="School of Innovative Technologies and Engineering (SITE)">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- /content -->
+
+
+
+
+
+            </div>
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+
+                <p>
+                <h3>Welcome Student!!</h3>
+
+                <div class="ui-block-b"><a href="#home" data-rel="close"
+                        class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Log Out</a></div>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+        </div>
+
+
+        <!--news page-->
+        <div data-role="page" id="news" class="jqm-demos ui-responsive-panel" data-title="News" data-url="news">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>News</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <!-- <div name="newsview" id="newsview"></div> -->
+                <div id="newsview"> <script>viewNews();</script> </div>
+
+
+
+
+            </div>
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+
+                <p>
+                <h3>Welcome Student!!</h3>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+        </div>
+
+
+
+        <!--event page-->
+        <div data-role="page" id="events" class="jqm-demos ui-responsive-panel" data-title="Events" data-url="events">
+            <div data-role="header">
+                <div style="text-align: center;">
+                    <img src="utm.png" width=60px>
+                    <p>Event</p>
+                </div>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+                <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <div id="eventsview"><script>viewEvents();</script></div>
+
+
+
+
+            </div>
+
+            <div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About UTM</a></li>
+
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="panel" data-position="right" data-display="reveal" data-theme="b" id="add-form">
+
+                <p>
+                <h3>Welcome Student!!</h3>
+                <div class="ui-block-b"><a href="#home" data-rel="close"
+                        class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Log Out</a></div>
+
+                </p>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!--scripts-->
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="js/slider.js"></script>
+
+
+
+    </body>
+
+</body>
+
+</html>
